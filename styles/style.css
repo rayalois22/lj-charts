@@ -1,0 +1,303 @@
+/* Style sheet*/
+
+/*
+button {
+    background-color: #474747;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 20%;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+*/
+
+.noshow{
+  display:none;
+}
+
+.align {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+/* helpers/grid.css */
+
+.grid {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 40em;
+  width: 90%;
+}
+
+ /* The Modal (background) */
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5px auto; /* 15% from the top and centered */
+    border: 1px solid #888;
+    width: 40%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    /* Position it in the top right corner outside of the modal */
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+/* Close button on hover */
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+body {
+  background-color: #eaeaea;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-size: 14px;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.5;
+  margin: 0;
+  min-height: 100%;
+}
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)}
+    to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+} 
+img.avatar {
+    width: 30%;
+    border-radius: 20%;
+}
+
+.imgcontainer {
+    text-align: center;
+/*    margin: 24px 0 12px 0;*/
+    background-color: #fefefe;
+}
+.container {
+    padding: 16px;
+}
+
+/*input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: none;
+  font: inherit;
+  margin: 0;
+  outline: none;
+  padding: 0;
+}*/
+
+input[type='submit'] {
+  cursor: pointer;
+}
+
+.form input[type='text'],
+.form input[type='password'] {
+  width: 100%;
+}
+
+label{
+	font-family: "sans-serif", "verdana", "arial";
+	font-size: 1em;
+}
+
+
+
+
+.login_header {
+  background-color: #282830;
+  border-top-left-radius: 0.25em;
+  border-top-right-radius: 0.25em;
+  color: #fff;
+  padding: 1.5em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.login_title {
+  font-size: 16px;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.login_body {
+  background-color: #fff;
+  padding: 1.5em;
+  position: relative;
+}
+.login_body::before {
+  background-color: #fff;
+  content: '';
+  height: 0.5em;
+  left: 50%;
+  margin-left: -0.25em;
+  margin-top: -0.25em;
+  position: absolute;
+  top: 0;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  width: 0.5em;
+}
+
+.login input[type='text'],
+.login input[type='password'] {
+  border: 0.0625em solid #e5e5e5;
+  padding: 1em 1.25em;
+}
+
+.login input[type='text'] {
+  border-top-left-radius: 0.25em;
+  border-top-right-radius: 0.25em;
+}
+
+.login input[type='password'] {
+  border-bottom-left-radius: 0.25em;
+  border-bottom-right-radius: 0.25em;
+  border-top: 0;
+}
+
+.login button[type='submit'] {
+  background-color: #686868;
+  border-radius: 0.25em;
+  color: #fff;
+  font-weight: 700;
+  -webkit-box-ordinal-group: 2;
+  -ms-flex-order: 1;
+  order: 1;
+  padding: 0.75em 1.25em;
+  position:relative;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  left:320px;
+}
+
+.login button[type='submit']:focus,
+.login button[type='submit']:hover {
+  background-color: #282830;
+}
+
+.login_footer {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #fff;
+  border-bottom-left-radius: 0.25em;
+  border-bottom-right-radius: 0.25em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+/*          justify-content: space-between;*/
+  padding-bottom: 1.5em;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+}
+.cancelbtn{
+	background-color: #686868;
+  	border-radius: 0.25em;
+  	color: #fff;
+  	font-weight: 700;
+  	-webkit-box-ordinal-group: 2;
+    -ms-flex-order: 1;
+          order: 1;
+  	padding: 0.75em 1.25em;
+  	-webkit-transition: background-color 0.3s;
+  	transition: background-color 0.3s;
+
+}
+.user_form {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+	font-size: 20px;
+	font-family: Arial;
+	border: 1px solid #373737;
+}
+
+.user_form textarea {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+	font-size: 16px;
+	font-family: Arial;
+	border: 1px solid #373737;
+}
+
+
+/* The "Forgot password" text */
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+    .cancelbtn {
+        width: 100%;
+    }
+}
