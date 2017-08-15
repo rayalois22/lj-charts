@@ -1,18 +1,18 @@
 <?php
 
-$lang["title"] = "Welcome to Habari Leo";
-$lang["personal_info"] = "Personal Information";
-$lang["username"] = "Username";
-$lang["fullname"] = "Full Name";
-
-$lang["password"] = "Password";
+$lang["materialtitle"] = "Control Material";
+$lang["materialDesc"] = "Material Description";
+$lang["materiallotno"] = "Lot Number";
+$lang["materialmean"] = "Control Value/Mean";
+$lang["materialhigh"] = "high";
+$lang["materialstd"] = "Standard Deviation";
 $lang["email"] = "Email";
 $lang["phonenumber"] = "Phone Number";
 $lang["profile_image"]="Profile Image";
 $lang["returnbutton"] = "Return";
 $lang["updatedetailsbutton"] = "Update Record";
-$lang["savedetailsbutton"] = "Save Details";
-$lang["savedetails"] = "Save Details";
+$lang["savedetails"] = "Save";
+$lang["cancel"] = "Cancel";
 $lang["movetoadmin"] = "Move this area to an administrator's page";
 $lang["copyright"] = "Copyright &copy; " . date("Y") . " - BBIT3104";
 $lang["table_name"] = $_SESSION["table_name"];
