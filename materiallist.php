@@ -30,8 +30,8 @@ session_start();
 		<?php
 			$sql= "Select cm_id, cm_name, cm_level,cm_mean, cm_LotNumber, cm_sd from ControlMaterial";
 
-			$material_arr =$MYSQL->select($sql);
-			$select_material[] = $material_arr;
+			$select_material =$MYSQL->getResults($sql);
+
 			if(is_array($select_material)){
 	
 				foreach($select_material AS $result_row){
