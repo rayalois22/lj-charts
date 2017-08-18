@@ -12,7 +12,6 @@ class Db{
 		$this->pass     = $DB_PASS;
 		$this->port     = $DB_PORT;
 		$this->getConnection();
-		$_SESSION["dbconn"] = $this->conn;
 	}
 
 	/******************************************************************************************
@@ -79,7 +78,123 @@ class Db{
 				return $res;
 				break;
 		}
-        }
+    }
+	/******************************************************************************************
+	Insert Query
+	******************************************************************************************/
+
+	public function insert($table,$data){
+		switch ($this->type) {
+		  case 'mysqli':
+			  ksort($data);
+			  $fieldDetails = NULL;
+			  $fieldNames = implode('`, `',  array_keys($data));
+			  $fieldValues = "" . implode("', '",  array_values($data));
+			  $sth = "INSERT INTO $table (`$fieldNames`) VALUES ('$fieldValues')";
+				if ($this->conn->query($sth) === TRUE) { return 'TRUE'; } else { return "Error: " . $sth . "<br />" . $this->conn->error; }
+			  break;
+		  case 'mysql':
+			  ksort($data);
+			  $fieldDetails = NULL;
+			  $fieldNames = implode('`, `',  array_keys($data));
+			  $fieldValues = "" . implode("', '",  array_values($data));
+			  $sth = "INSERT INTO $table (`$fieldNames`) VALUES ('$fieldValues')";
+			  if (mysqli_query($this->conn,$sth)) { return 'true'; }else{ return 'false';}
+			  break;
+		}
+	}
+	/******************************************************************************************
+	Update Query
+	******************************************************************************************/
+	public function update($table,$data,$where){
+		switch ($this->type) {
+		  case 'mysqli':
+			  $wer = '';
+			  if(is_array($where)){
+			    foreach ($where as $clave=>$valor){
+			      $wer.= $clave."='".$valor."' AND ";
+			    }
+			    $wer   = substr($wer, 0, -4);
+			    $where = $wer;
+			  }
+			  ksort($data);
+			  $fieldDetails = NULL;
+			  foreach ($data as $key => $values){
+			      $fieldDetails .= "$key='$values',";
+			  }
+			  $fieldDetails = rtrim($fieldDetails,',');
+			  if($where==NULL or $where==''){
+			    $sth = "UPDATE $table SET $fieldDetails";
+			  }else {
+			    $sth = "UPDATE $table SET $fieldDetails WHERE $where";
+			  }
+				if ($this->conn->query($sth) === TRUE) { return 'TRUE'; } else { return "Error: " . $sth . "<br />" . $this->conn->error; }
+			  break;
+		  case 'mysql':
+			  $wer = '';
+			  if(is_array($where)){
+			    foreach ($where as $clave=>$valor){
+			      $wer.= $clave."='".$valor."' AND ";
+			    }
+			    $wer   = substr($wer, 0, -4);
+			    $where = $wer;
+			  }
+			  ksort($data);
+			  $fieldDetails = NULL;
+			  foreach ($data as $key => $values){
+			      $fieldDetails .= "$key='$values',";
+			  }
+			  $fieldDetails = rtrim($fieldDetails,',');
+			  if($where==NULL or $where==''){
+			    $sth = "UPDATE $table SET $fieldDetails";
+			  }else {
+			    $sth = "UPDATE $table SET $fieldDetails WHERE $where";
+			  }
+			  if (mysqli_query($this->conn,$sth)) { return 'true'; }else{ return 'false';}
+			  break;
+		}
+	}
+	/******************************************************************************************
+	Delete Query
+	******************************************************************************************/
+	public function delete($table,$where){
+		switch ($this->tipo) {
+		  case 'mysqli':
+			  $wer = '';
+			  if(is_array($where)){
+			    foreach ($where as $clave=>$valor){
+			      $wer.= $clave."='".$valor."' and ";
+			    }
+			    $wer   = substr($wer, 0, -4);
+			    $where = $wer;
+			  }
+			  if($where==NULL or $where==''){
+			    $sth = "DELETE FROM $table";
+			  }else{
+			    $sth = "DELETE FROM $table WHERE $where";
+			  }
+				if ($this->connection->query($sth) === TRUE) { return 'TRUE'; } else { return "Error: " . $sth . "<br />" . $this->connection->error; }
+			  break;
+				case 'mysql':
+			  $wer = '';
+			  if(is_array($where)){
+			    foreach ($where as $clave=>$valor){
+			      $wer.= $clave."='".$valor."' and ";
+			    }
+			    $wer   = substr($wer, 0, -4);
+			    $where = $wer;
+			  }
+			  if($where==NULL or $where==''){
+			    $sth = "DELETE FROM $table";
+			    if (mysqli_query($this->connection,$sth)) { return 'true'; }else{ return 'false';}
+			  }else{
+			    $sth = "DELETE FROM $table WHERE $where";
+			    if (mysqli_query($this->connection,$sth)) { return 'true'; }else{ return 'false';}
+			  }
+			  break;
+		}
+	}
+
 
 }
 

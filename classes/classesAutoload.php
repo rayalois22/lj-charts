@@ -27,7 +27,7 @@ if (version_compare(PHP_VERSION, '5.1.2', '>=')) {
 
 	/* Examples: */
 require_once "constants.php";
-require_once "lang/en.php";
+//require_once "lang/en.php";
 require_once "db.php";
 /************************************************************
 **                        MYSQLi                          **

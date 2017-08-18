@@ -11,11 +11,22 @@ button {
     border: none;
     border-radius:0.25em;
     cursor: pointer;
-    width: 30%;
     margin:0px 20px;
 
 }
+.cancelbtn{
+  background-color: #686868;
+    border-radius: 0.25em;
+    color: #fff;
+    -webkit-box-ordinal-group: 2;
+    -ms-flex-order: 1;
+          order: 1;
+    padding: 14px 20px;
+    -webkit-transition: background-color 0.3s;
+    transition: background-color 0.3s;
+    margin: 0px 20px;
 
+}
 button:hover {
     opacity: 0.8;
 }
@@ -207,19 +218,7 @@ label{
   padding-left: 1.5em;
   padding-right: 1.5em;
 }
-.cancelbtn{
-	background-color: #686868;
-  	border-radius: 0.25em;
-  	color: #fff;
-  	-webkit-box-ordinal-group: 2;
-    -ms-flex-order: 1;
-          order: 1;
-  	padding: 14px 20px;
-  	-webkit-transition: background-color 0.3s;
-  	transition: background-color 0.3s;
-    margin: 0px 20px;
 
-}
 .user_form {
     width: 100%;
     padding: 12px 20px;
@@ -253,7 +252,7 @@ span.psw {
         display: block;
         float: none;
     }
-    .cancelbtn {
+    button {
         width: 100%;
     }
 }
