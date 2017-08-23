@@ -1,11 +1,12 @@
 <?php
 /**
 *
-*ENGLISH 
+*FRENCH
 *
 */
+$lang = [ 
 #forms
-$lang = [ "forms" => [
+"forms" => [
 /**
 *
 *@@author:rayalois22
@@ -63,5 +64,6 @@ $lang = [ "forms" => [
 		"savedetails" 	=> "Save",
 		"cancel"  => "Cancel"		
 	]
-]];
+]#end@forms
+];
 ?>
