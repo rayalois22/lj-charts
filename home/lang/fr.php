@@ -15,9 +15,9 @@ $lang = [
 */
 	"login" => [
 		"ti" 	=> "Login Form",
-		"un"	=> "Username",
-		"pw"	=> "Password",
-		"lo"	=> "Login",
+		"un"	=> "Nom d'utilisateur",
+		"pw"	=> "Mot de passe",
+		"lo"	=> "S'identifier",
 		"re"	=> "Register",
 		"en"	=> "English",
 		"fr"	=> "French"
