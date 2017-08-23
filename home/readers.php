@@ -37,6 +37,14 @@ define("readers", [
 		"cancel" 	=> "cancel",
 		"staff" 	=> "staff",
 		"admin" 	=> "admin"
+	],
+	"an" => [
+		"name"	 => "analytename",
+		"units"	 => "analyteunits",
+		"create" => "createnewanalyte"
+	],
+	"universal"	=> [
+		"cancel" => "cancelreq"
 	]
 ]);
 ?>

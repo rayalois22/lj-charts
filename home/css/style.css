@@ -4,6 +4,7 @@
 *
 */
 @import url(w3.css);
+<<<<<<< HEAD
 
 /* config.css */
 
@@ -208,3 +209,6 @@ p {
 .text--center {
   text-align: center;
 }
+=======
+@import url(login.css);
+>>>>>>> 077d084b34591037b86e94e80968569947498469

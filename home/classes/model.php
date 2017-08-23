@@ -9,6 +9,9 @@
 *
 *@mod_login
 *@mod_register
+*@mod_newan
+*@mod_newcm
+*@mod_newcmr
 *
 */
 	class model{
@@ -98,5 +101,18 @@
 				} else {print 'Error';}
 			}
 }#end@FUNCTION mod_register
+/**
+*
+*mod_newan()
+*
+*/
+		public function mod_newan($an_name, $an_units){
+			$ObjCHK = new db_check();
+			if($ObjCHK->create_new_analyte($an_name, $an_units, $_SESSION['user']['userid'])){
+				print '<em>'.$an_name.'</em> has been created.';
+			} else {
+				print 'Error';
+			}
+}#end@FUNCTION @mod_newan
 }#end@CLASS
 ?>

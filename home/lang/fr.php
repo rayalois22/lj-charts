@@ -1,11 +1,12 @@
 <?php
 /**
 *
-*ENGLISH 
+*FRENCH
 *
 */
+$lang = [ 
 #forms
-$lang = [ "forms" => [
+"forms" => [
 /**
 *
 *@@author:rayalois22
@@ -14,9 +15,9 @@ $lang = [ "forms" => [
 */
 	"login" => [
 		"ti" 	=> "Login Form",
-		"un"	=> "Username",
-		"pw"	=> "Password",
-		"lo"	=> "Login",
+		"un"	=> "Nom d'utilisateur",
+		"pw"	=> "Mot de passe",
+		"lo"	=> "S'identifier",
 		"re"	=> "Register",
 		"en"	=> "English",
 		"fr"	=> "French"
@@ -51,7 +52,7 @@ $lang = [ "forms" => [
 *@@author:jkikuyu
 *
 */
-	"material" => [
+	"cm" => [
 		"cm_name" => "Control Material",
 		"cm_description"  =>	"Material Description",
 		"cm_lot_number" =>  "Lot Number",
@@ -63,5 +64,6 @@ $lang = [ "forms" => [
 		"savedetails" 	=> "Save",
 		"cancel"  => "Cancel"		
 	]
-]];
+]#end@forms
+];
 ?>
