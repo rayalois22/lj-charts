@@ -108,7 +108,7 @@
 *@@author:jkikuyu
 *
 */
-		public function new_control_material(){
+		public function fm_control_material(){
 ?><table style="margin-left:20%">
 <tr>
 <td style = "width: 50%">

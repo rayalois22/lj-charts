@@ -32,6 +32,14 @@
 				$MOD = new model();
 				$MOD->mod_login(addslashes($_POST[readers['login']['un']]), addslashes($_POST[readers['login']['pw']]));
 			}
+						if(isset($_POST[readers['login']['lo']])){
+				$MOD = new model();
+				$MOD->mod_login(addslashes($_POST[readers['login']['un']]), addslashes($_POST[readers['login']['pw']]));
+			}
+			if(isset($_POST[readers['main_navigation']['cm']])){
+				$MOD = new model();
+
+			}
 			//dashboard
 			if(isset($_SESSION['user'])){
 				$get = [];
@@ -44,9 +52,13 @@
 								exit();
 							case 'an':
 								print 'Analyte options...';
+
 								break;
 							case 'cm':
 								print 'Control material options...';
+								$FM = new ljcharts_forms();
+								
+								$FM->fm_control_material();
 								break;
 							case 'cmr':
 								print 'Control material result options...';

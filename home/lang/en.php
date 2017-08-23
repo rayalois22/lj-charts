@@ -40,7 +40,7 @@ define("forms", [
 *@@author:jkikuyu
 *
 */
-	"cm" => [
+	"material" => [
 		"cm_name" => "Control Material",
 		"cm_description"  =>	"Material Description",
 		"cm_lot_number" =>  "Lot Number",
