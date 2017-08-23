@@ -1,5 +1,9 @@
 <?php
 session_start();
+		require_once "lang/en.php";
+		require_once "classes/classesAutoload.php"
+
+
 ?>
 <!DOCTYPE html>
 <html> 
@@ -9,13 +13,11 @@ session_start();
 	<script type = "text/javascript" src = "js/nyroModal/js/jquery.nyroModal.custom.js" ></script>
 	<script type = "text/javascript" src = "js/ckeditor/ckeditor.js" ></script>
 <head>
-	
+	<title><?php echo $lang["materialtitle"]; ?></title>
 </head>
 <body>
-	<?php
-		require_once "lang/en.php";
-		require_once "classes/classesAutoload.php"
-	?>
+
+	<h3 class="text-center	"><?php echo $lang["materialtitle"]; ?> </h3>
 	<div class="table-responsive">
 		<table class="table table bordered">
 		<thead>

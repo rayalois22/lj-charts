@@ -14,6 +14,8 @@ session_start();
  -->
 </head>
 <body>
+<h3 class="text-center"><?php echo $lang["materialtitle"]; ?> </h3>
+
 <table style="margin-left:20%">
 <tr>
 <td style = "width: 50%">
@@ -50,7 +52,7 @@ session_start();
 							<div class = "user_form">
                        			 <label><input type="radio" name="controllevel" value="High" />High</label>
                        			 <label><input type="radio" name="controllevel" value="Medium" />Med</label>
-                        		<label><input type="radio" name="controllevel" value="Loaw" />Low</label>
+                        		<label><input type="radio" name="controllevel" value="Low" />Low</label>
                         		</div>
                   
 
