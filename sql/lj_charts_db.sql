@@ -108,6 +108,13 @@ INSERT INTO `user` (`usr_id`, `usr_first_name`, `usr_last_name`, `usr_username`,
 (1, 'Alois', 'Odhiambo', 'alois', 'alois.odhiambo@strathmore.edu', 'Manag', '$2y$10$glKtPr3Ngse1kV3n2ZRsqOciQ4szSDzE4xRkJIJjeKr7V1YKLF54S', 'default.png', 0x31, '2017-08-18 20:43:21');
 
 --
+-- rename an_nits to an_units in analayte
+--
+ALTER TABLE `analyte`
+  DROP COLUMN `an_nits` CASCADE;
+ALTER TABLE `analyte`
+  ADD COLUMN `an_units` VARCHAR(15);
+--
 -- Indexes for dumped tables
 --
 
