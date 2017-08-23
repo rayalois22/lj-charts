@@ -27,6 +27,7 @@
 	$CONF = new config();
 	// Avail the needed resources
 	$RES = new resources();
+	$RES->get();
 	//Avail the controller
 	$CTRL = new controller();
 ?>

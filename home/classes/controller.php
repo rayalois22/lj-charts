@@ -8,11 +8,17 @@
 */
 	class controller{
 		public function control(){
+			//language options -- changes the language
+			if(isset($_GET['lang'])){
+				$RES = new resources();
+				$RES->set_lang($_GET['lang']);
+				$RES->get();
+			}
 			//login form
 			if((!isset($_SESSION['user'])) && (!isset($_POST[readers['login']['lo']])) && (!isset($_GET[readers['login']['re']])) && (!isset($_POST[readers['register']['re']]))){
 				//Avail the forms
 				$FM = new ljcharts_forms();
-				$FM->fm_login();
+				$FM->fm_login_new();
 				exit();
 			}
 			//registration form
@@ -34,16 +40,17 @@
 			}
 			//dashboard
 			if(isset($_SESSION['user'])){
-				$get = [];
 				for($i=0; $i<count(array_keys(site['main_navigation'])); $i++){
 					if(isset($_GET[array_keys(site['main_navigation'])[$i]])){
 						switch(array_keys(site['main_navigation'])[$i]){
 							case 'logout':
 								unset($_SESSION['user']);
-								header('Location: ./');
-								exit();
+								unset($_SESSION['lang']);
+								header('Location: ./?logout=true');
+								exit;
 							case 'an':
-								print 'Analyte options...';
+								$FM = new ljcharts_forms();
+								$FM->fm_new_analyte();
 								break;
 							case 'cm':
 								print 'Control material options...';
@@ -55,6 +62,10 @@
 								break;
 						}
 					}
+				}
+				if(isset($_POST[readers['an']['create']])){
+					$MOD = new model();
+					$MOD->mod_newan(addslashes($_POST[readers['an']['name']]), addslashes($_POST[readers['an']['units']]));
 				}
 				$HEADER = new ljcharts_header();
 				$HEADER->set_header();
