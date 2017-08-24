@@ -18,25 +18,26 @@ $lang = [
 		"un"	=> "Nom d'utilisateur",
 		"pw"	=> "Mot de passe",
 		"lo"	=> "S'identifier",
-		"re"	=> "Register",
-		"en"	=> "English",
-		"fr"	=> "French"
+		"re"	=> "Registre",
+		"lang"	=> "La langue",
+		"en"	=> "Anglais",
+		"fr"	=> "Français"
 	],
 	"register" => [
-		"ti"	=> "Registration Form",
-		"fn"	=> "First name",
-		"ln"	=> "Last name",
-		"un"	=> "Username",
-		"em"	=> "Email address",
-		"ro"	=> "Role",
-		"pw"	=> "Password",
-		"cpw"	=> "Confirm password",
-		"pi"	=> "Profile picture",
+		"ti"	=> "Formulaire d'inscription",
+		"fn"	=> "Prénom",
+		"ln"	=> "Nom de famille",
+		"un"	=> "Nom d'utilisateur",
+		"em"	=> "Adresse e-mail",
+		"ro"	=> "Rôle",
+		"pw"	=> "Mot de passe",
+		"cpw"	=> "Confirmez le mot de passe",
+		"pi"	=> "Image",
 		"re"	=> "Register",
 		"reset" => "Clear",
 		"cancel" => "Cancel",
-		"staff"	 => "Staff",
-		"admin"	 => "Admin"
+		"staff"	 => "Personnel",
+		"admin"	 => "Administrateur"
 	],
 	"an" => [
 		"an_name" 	=> "Name of Analyte",
@@ -64,6 +65,10 @@ $lang = [
 		"savedetails" 	=> "Save",
 		"cancel"  => "Cancel"		
 	]
-]#end@forms
-];
+],#end@forms
+"actionbar" => [
+		"create" => "Nouveau",
+		"update" => "Modifier",
+		"delete" => "Effacer"
+]];
 ?>
