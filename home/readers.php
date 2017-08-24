@@ -8,13 +8,19 @@
 #site
 define("site", [
 	"main_navigation" => [
-		"an"	=> "Analytes",
-		"cm"	=> "Control materials",
-		"cmr"	=> "Control material results",
-		"logout"=> "Logout"
+		"an"		=> "Analytes",
+		"cm"		=> "Control materials",
+		"cmr"		=> "Control material results",
+		"logout"	=> "Logout"
 	],
-	"main_js" => "home/js/main.js",
-	"main_css" => "home/css/style.css"
+	"main_js" 		=> "home/js/main.js",
+	"main_css" 		=> "home/css/style.css",
+	"jquery_js" 	=> "home/js/jquery-v2.1.3.js",
+	"custom_js" 	=> "home/js/custom.js",
+	"login_js"	 	=> "home/js/login.js",
+	"json_parser" 	=> "home/js/json2.js",
+	"pi_path" 		=> "home/images/upload/profiles/",
+	"ic_path" 		=> "home/images/icons/"
 ]);
 #readers
 define("readers", [
@@ -23,8 +29,7 @@ define("readers", [
 		"pw"	=> "password",
 		"lo"	=> "submitlogin",
 		"re"	=> "reqregister"
-	],
-	"register" => [
+	],"register" => [
 		"fn" => "firstname",
 		"ln" => "lastname",
 		"un" => "username",
@@ -37,14 +42,16 @@ define("readers", [
 		"cancel" 	=> "cancel",
 		"staff" 	=> "staff",
 		"admin" 	=> "admin"
-	],
-	"an" => [
+	],"an" => [
 		"name"	 => "analytename",
 		"units"	 => "analyteunits",
 		"create" => "createnewanalyte"
-	],
-	"universal"	=> [
+	],"actionbar" => [
+		"create" => "create",
+		"read"	 => "read",
+		"update" => "update",
+		"delete" => "delete"
+	],"universal"	=> [
 		"cancel" => "cancelreq"
-	]
-]);
+]]);
 ?>
