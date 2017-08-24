@@ -86,7 +86,16 @@
 *
 */
 		public function fm_register(){
-?><div><form action="./" method="post" enctype="multipart/form-data">
+?>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="<?php echo site['main_css']; ?>"  />
+		<script type="text/javascript" src="<?php echo site['jquery_js']; ?>"></script>
+		<script type="text/javascript" src="<?php echo site['login_js']; ?>"></script>
+	</head><body class="align">
+<div class="grid"><form action="./" method="post" enctype="multipart/form-data" class="form login">
 <table>
 	<thead>
 		<tr><th><?php echo $_SESSION['lang']['forms']['register']['ti']; ?></th></tr>
@@ -95,36 +104,32 @@
 		<tr>
 			<td>
 				<table>
-					<tr><td><?php echo $_SESSION['lang']['forms']['register']['fn']; ?></td></tr>
-					<tr><td><?php echo $_SESSION['lang']['forms']['register']['ln']; ?></td></tr>
-					<tr><td><?php echo $_SESSION['lang']['forms']['register']['un']; ?></td></tr>
-					<tr><td><?php echo $_SESSION['lang']['forms']['register']['em']; ?></td></tr>
-					<tr><td><?php echo $_SESSION['lang']['forms']['register']['ro']; ?></td></tr>
-					<tr><td><?php echo $_SESSION['lang']['forms']['register']['pi']; ?></td></tr>
-					<tr><td><?php echo $_SESSION['lang']['forms']['register']['pw']; ?></td></tr>
-					<tr><td><?php echo $_SESSION['lang']['forms']['register']['cpw']; ?></td></tr>
-				</table>
-			</td>
-			<td>
-				<table>
-					<tr><td><input type="name" name="<?php echo readers['register']['fn']; ?>" required autofocus /></td></tr>
-					<tr><td><input type="name" name="<?php echo readers['register']['ln']; ?>" /></td></tr>
-					<tr><td><input type="name" name="<?php echo readers['register']['un']; ?>" required /></td></tr>
-					<tr><td><input type="email" name="<?php echo readers['register']['em']; ?>" required /></td></tr>
-					<tr><td><select name="<?php echo readers['register']['ro']; ?>">
-								<option><?php echo $_SESSION['lang']['forms']['register']['staff']; ?></option>
-								<option><?php echo $_SESSION['lang']['forms']['register']['admin']; ?></option>
-							</select></td>
+					<tr><td><input type="name" name="<?php echo readers['register']['fn']; ?>" placeholder="<?php echo $_SESSION['lang']['forms']['register']['fn']; ?>" required autofocus /></td></tr>
+					<tr><td><input type="name" name="<?php echo readers['register']['ln']; ?>" placeholder="<?php echo $_SESSION['lang']['forms']['register']['ln']; ?>" /></td></tr>
+					<tr><td><input type="name" name="<?php echo readers['register']['un']; ?>" placeholder="<?php echo $_SESSION['lang']['forms']['register']['un']; ?>" required /></td></tr>
+					<tr><td><input type="email" name="<?php echo readers['register']['em']; ?>" placeholder="<?php echo $_SESSION['lang']['forms']['register']['em']; ?>" required /></td></tr>
+					<tr>
+						<table>
+							<tr style="margin-top:1px;margin-bottom:1px;">
+								<td><label><?php echo $_SESSION['lang']['forms']['register']['ro']; ?>:</label></td>
+								<td><select name="<?php echo readers['register']['ro']; ?>">
+								<option value="Staff"><?php echo $_SESSION['lang']['forms']['register']['staff']; ?></option>
+								<option value="Admin"><?php echo $_SESSION['lang']['forms']['register']['admin']; ?></option></select></td>
+							</tr>
+							<tr style="margin-top:1px;margin-bottom:1px;">
+								<td><label><?php echo $_SESSION['lang']['forms']['register']['pi']; ?>:</label></td>
+								<td><input type="file" name="<?php echo readers['register']['pi']; ?>" /></td>
+							</tr>
+						</table>
 					</tr>
-					<tr><td><input type="file" name="<?php echo readers['register']['pi']; ?>" /></td></tr>
-					<tr><td><input type="password" name="<?php echo readers['register']['pw']; ?>" required /></td></tr>
-					<tr><td><input type="password" name="<?php echo readers['register']['cpw']; ?>" /></td></tr>
+					<tr><td><input type="password" name="<?php echo readers['register']['pw']; ?>" placeholder="<?php echo $_SESSION['lang']['forms']['register']['pw']; ?>" required /></td></tr>
+					<tr><td><input type="password" name="<?php echo readers['register']['cpw']; ?>" placeholder="<?php echo $_SESSION['lang']['forms']['register']['cpw']; ?>" /></td></tr>
 				</table>
 			</td>
 		</tr>
 	</tbody>
 	<tfoot>
-		<tr><th><input type="submit" name="<?php echo readers['register']['re']; ?>" value="<?php echo $_SESSION['lang']['forms']['register']['re']; ?>"/></th><th><input type="submit" name="<?php echo readers['register']['cancel']; ?>" value="<?php echo $_SESSION['lang']['forms']['register']['cancel']; ?>" /></th></tr>
+		<tr><th><input type="submit" name="<?php echo readers['register']['re']; ?>" value="<?php echo $_SESSION['lang']['forms']['register']['re']; ?>" /></th></tr>
 	</tfoot>
 </table>
 </form></div><?php
@@ -270,11 +275,12 @@
 	<div class="form__field">
 		<input type="submit" name="<?php echo readers['login']['lo']; ?>" value="<?php echo $_SESSION['lang']['forms']['login']['lo']; ?>" />
 	</div>
-	<div class="registration_link">
+	<div class="form__field">
 		<a href="./?<?php echo readers['login']['re']; ?>"><?php echo $_SESSION['lang']['forms']['login']['re']; ?></a>
 	</div>
-	<div class="language_options">
-		Language: <select>
+	<div class="form__field">
+		<?php echo $_SESSION['lang']['forms']['login']['lang']; ?>: <select id="lang-select">
+			<option value="en">---</option>
 			<option value="en"><?php echo $_SESSION['lang']['forms']['login']['en']; ?></option>
 			<option value="fr"><?php echo $_SESSION['lang']['forms']['login']['fr']; ?></option>
 		</select>
@@ -285,5 +291,24 @@
 </div></body>
 <?php
 }#end@FUNCTION @fm_login_new
+/**
+*
+*fm_options()
+*
+*CRUD operations
+*
+*/
+		public function fm_options($object){
+			//create, read, update, delete	
+?>
+<div id="actionbar">
+		<?php 
+			foreach($_SESSION['lang']['actionbar'] as $key=>$value){
+				print '<input type="submit" name="'.readers['actionbar'][$key].$object.'" value="'.$value.'" formaction="./" formmethod="post" />&nbsp;';
+			}
+		?>
+</div>
+<?php
+}#end@FUNCTION @fm_options
 }#end@CLASS
 ?>
