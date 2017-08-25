@@ -67,9 +67,9 @@
 								$FM = new ljcharts_forms();
 								$MOD = new model();
 								$analytes = $MOD->mod_get_all_analytes();
-
-								$FM->fm_control_material($analytes);
 								$FM->body_open();
+								$FM->fm_control_material($analytes);
+								//$FM->body_open();
 								###########################################################
 								#TODO: Jude, find a way to instantiate the forms here#
 								#Then we will hook the below actions into the form#
@@ -78,9 +78,12 @@
 								//avail options to create, update, and delete an
 								$FM->fm_options('an');
 								break;
-							case 'cm':
+							case 'cmlst':
+								$MOD = new model();
 								$FM = new ljcharts_forms();
 								$FM->body_open();
+								$materials = $MOD->mod_get_all_materials();
+								$FM->fm_material_listing($materials);
 								###########################################################
 								#TODO: Jude, find a way to instantiate the forms here#
 								#Then we will hook the below actions into the form#

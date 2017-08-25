@@ -7,7 +7,8 @@
 *RESPONSIBLE FOR DATABASE 'CRUD' OPERATIONS
 *
 */
-	class db_check{//@@author:rayalois22
+	class db_check{
+	//@@author:rayalois22
 		private $connection;
 		public function __construct(){$db = new db_connection();$this->connection = $db->connect();}
 		public function lastaccess($userid){if($statement = $this->connection->prepare("UPDATE `user` SET `usr_access_time` = ? WHERE `usr_id` = ?")){$accesstime = date("YmdHis", time());if($statement->bind_param("ss", $accesstime, $userid)){if($statement->execute()){if(!$this->connection->errno){return true;}else{return false;}}else{return false;}}else{return false;}}else{return false;}}
@@ -24,12 +25,10 @@
 		public function get_analyte_units($an_id){ if($statement = $this->connection->prepare("SELECT an_units FROM `analyte` WHERE `an_id` = ?")) { if($statement->bind_param("i", $an_id)){ if($statement->execute()){ if($statement->bind_result($an_units)){ if($statement->store_result()){if($statement->num_rows > 0){ if($statement->fetch()){ return $an_units; } else{ return false;} } else{return false;} } else{return false;} } else{return false;} } else{return false;} } else{return false;} } else{return false;}}
 
 		public function is_material($cm_name, $usr_id){if($statement = $this->connection->prepare("SELECT * FROM `controlmaterial` WHERE `cm_name` = ? AND `usr_id` = ?")){if($statement->bind_param("ss", $cm_name, $usr_id)){if($statement->execute()){if($statement->store_result()){if($statement->num_rows > 0){$statement->close();return true;}else{$statement->close();return false;}}else{$statement->close();return false;}}else{$statement->close();return false;}}else{ $statement->close();return false;}}else{return false;}}
-		public function insert_material($cm_name, $an_id, $an_units, $usr_id, $cm_level, $lotno, $mean, $sd) {
-			if($this->is_material($cm_name, $usr_id)){
-				return false;
-			}else{
-				if($statement = $this->connection->prepare("INSERT INTO `controlmaterial`(`cm_name`,`an_id`,`cm_units`, `usr_id`,`cm_lot_number`,`cm_level`,`cm_mean`,`cm_sd`) VALUES(?,?,?,?,?,?,?,?)")){if($statement->bind_param("sdssssdd", $cm_name, $an_id, $an_units, $usr_id, $lotno, $cm_level,$mean, $sd)){if($statement->execute()){$statement->close();return true;}else{return false;}}else{return false;}}else{return false;}}}
+		public function insert_material($cm_name, $an_id, $an_units, $usr_id, $cm_level, $lotno, $mean, $sd) {if($this->is_material($cm_name, $usr_id)){return false;}else{if($statement = $this->connection->prepare("INSERT INTO `controlmaterial`(`cm_name`,`an_id`,`cm_units`, `usr_id`,`cm_lot_number`,`cm_level`,`cm_mean`,`cm_sd`) VALUES(?,?,?,?,?,?,?,?)")){if($statement->bind_param("sdssssdd", $cm_name, $an_id, $an_units, $usr_id, $lotno, $cm_level,$mean, $sd)){if($statement->execute()){$statement->close();return true;}else{return false;}}else{return false;}}else{return false;}}}
+			public function get_all_materials(){if($result = $this->connection->query("Select `c`.`cm_id`, `a`.`an_name`, `c`.`cm_name`, `c`.`cm_level`,`c`.`cm_mean`, `c`.`cm_lot_number`, `c`.`cm_sd` from `controlmaterial` `c` inner join `analyte` `a` on `c`.`an_id`=`a`.`an_id`")){for ($res = array (); $row = $result->fetch_assoc(); $res[] = $row); return $res;}else{return false;}}
 
+	
 }
 
 ?>

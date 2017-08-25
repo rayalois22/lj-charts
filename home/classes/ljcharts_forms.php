@@ -165,23 +165,14 @@
 }#end@FUNCTION @fm_new_analyte
 /**
 *
-*@fm_new_control_material
+*@fm_control_material
 *@@author:jkikuyu
 *
 */
 public function fm_control_material($analytes){
 
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
 
-	<link rel="stylesheet" type="text/css" href="<?php echo site['main_css']; ?>"  />
-	<script type="text/javascript" src="<?php echo site['main_js']; ?>"></script>
-				
-</head>
-<body>
 <table style="margin-left:20%">
 <tr>
 <td style = "width: 50%">
@@ -250,11 +241,65 @@ public function fm_control_material($analytes){
 		</tr>
 </form>
 </table>
-</body>
-</html>
-<?php	
 
-}#end@FUNCTION @fm_new_control_material
+
+<?php 
+}#end@FUNCTION @fm_control_material
+/**
+*
+*@fm_material_listing
+*@@author:jkikuyu
+*
+*/
+	public function fm_material_listing($select_material){
+?>
+	<h3 class="text-center	"><?php echo $_SESSION['lang']['forms']['material']['cm_list']; ?> </h3>
+	<div class="table-responsive">
+		<table class="table table bordered">
+		<thead>
+			<tr>
+				<th><?php print ucwords($_SESSION['lang']['forms']['material']['cm_description']); ?></th>
+				<th><?php print ucwords($_SESSION['lang']['forms']['material']['analyte']); ?></th>
+				<th><?php print ucwords($_SESSION['lang']['forms']['material']['cm_level']); ?></th>
+				<th><?php print ucwords($_SESSION['lang']['forms']['material']['cm_lot_number']); ?></th>
+				<th><?php print ucwords($_SESSION['lang']['forms']['material']['cm_mean']); ?></th>
+				<th><?php print ucwords($_SESSION['lang']['forms']['material']['cm_sd']); ?></th>
+				<th><?php print ucwords($_SESSION['lang']['forms']['material']['actions']); ?></th>
+
+			</tr>
+		</thead>
+		<?php
+			
+
+			if(is_array($select_material)){
+				
+				foreach($select_material AS $result_row){
+		?>
+			<tr>
+				<td><?php print $result_row["cm_name"]; ?> </td>
+				<td><?php print $result_row["an_name"]; ?> </td>
+				<td><?php print $result_row["cm_level"]; ?> </td>
+
+				<td><?php print $result_row["cm_lot_number"];?></td>
+				<td><?php print $result_row["cm_mean"]; ?> </td>
+				<td><?php print $result_row["cm_sd"]; ?></td>
+				<td>
+			<a id = "listlinks" title = "More about <?php echo $result_row["cm_name"]; ?>" href = "dispatch.php?viewId=<?php echo $result_row["cm_id"]; ?>" class = "nyroModal" ><img src = "images/icons/details.png" width = "20px" height = "20px" /></a> | <a id = "listlinks" title = "Edit <?php echo $result_row["cm_name"]; ?>" href = "dispatch.php?editId=<?php echo $result_row["cm_id"]; ?>"><img src = "images/icons/edit.png" width = "15px" height = "15px" /></a> | <a id = "listlinks" title = "Delete <?php echo $result_row["cm_name"]; ?>" href = "index.php?delId=<?php echo $result_row["cm_id"]; ?>" onClick = "return confirm('Are you sure you want to delete <?php echo $result_row["cm_name"]; ?> from the database?')"><img src = "images/icons/del.png" width = "15px" height = "15px" /></a>
+				</td>
+			</tr>
+
+
+<?php	
+		}#END FOREACH
+	}#ENDIF
+?>
+	</table>
+
+
+
+<?php
+}#end@FUNCTION @fm_material_listing
+
 /**
 *
 *@fm_login_new

@@ -11,7 +11,8 @@ define("site", [
 		"an"		=> "Analytes",
 		"cm"		=> "Control materials",
 		"cmr"		=> "Control material results",
-		"logout"	=> "Logout"
+		"logout"	=> "Logout",
+		"cmlst"		=> "Material List"
 	],
 	"main_js" 		=> "home/js/main.js",
 	"main_css" 		=> "home/css/style.css",

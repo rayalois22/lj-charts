@@ -113,20 +113,29 @@ public function mod_register($firstname, $lastname, $username, $emailaddress, $r
 			} else {
 				print 'Error';
 			}
-}#end@FUNCTION @mod_newan
+		}#end@FUNCTION @mod_newan
 
 		public function mod_get_all_analytes(){
+		/*
+		 *@author Jude Kikuyu
+		*/
 			$ObjCHK = new db_check();
 			$analyte = $ObjCHK->get_all_analytes();
 			return $analyte;
 
 		}#end@FUNCTION @mod_get_all_analytes
 		public function mod_get_analyte_units($an_id){
+		/*
+		 *@author Jude Kikuyu
+		*/
 			$ObjCHK = new db_check();
 			$an_units = $ObjCHK->get_analyte_units($an_id);
 		return $an_units;
-		}
+		}#end@FUNCTION @mod_get_analyte_units
 		public function mod_insert_material($cm_name, $an_id, $an_units,  $cm_level, $lotno, $mean, $sd){
+		/*
+		 *@author Jude Kikuyu
+		*/
 			$ObjCHK = new db_check();
 			$isSuccess= $ObjCHK->insert_material($cm_name, $an_id,$an_units,$_SESSION['user']['userid'], $cm_level, $lotno, $mean, $sd);
 
@@ -137,7 +146,15 @@ public function mod_register($firstname, $lastname, $username, $emailaddress, $r
 				print  "error creating ". "<em>". $cm_name. "</em>";
 			}
 
-		}
+		}#end@FUNCTION @mod_insert_material
+		public function mod_get_all_materials(){
+			/*
+			 *@author Jude Kikuyu
+			*/
+			$ObjCHK = new db_check();
+			$material= $ObjCHK->get_all_materials();
+			return $material;
+		}#end@FUNCTION @mod_get_all_materials
 }#end@CLASS
 
 ?>

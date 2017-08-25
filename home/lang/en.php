@@ -54,16 +54,18 @@ $lang = [ "forms" => [
 */
 	"material" => [
 		"cm_title" => "Material Details",
-		"cm_name" => "Control Material",
+		"cm_list" => "Control Material Listing",
 		"cm_description"  =>	"Material Description",
 		"cm_lot_number" =>  "Lot Number",
 		"cm_mean"	=>  "Control Value/Mean",
-		"cm_level" =>  "high",
+		"cm_level" =>  "Level",
+		"analyte" => "Analyte",
 		"cm_sd"   =>  "Standard Deviation",
 		"returnbutton"  =>  "Return",
 		"updatedetails" => "Update Record",
 		"savedetails" 	=> "Save",
-		"cancel"  => "Cancel"		
+		"cancel"  => "Cancel",
+		"actions" =>"Actions"		
 	]
 ],#end@forms
 "actionbar" => [
