@@ -142,22 +142,31 @@
 *@@author:jkikuyu
 *
 */
-		public function fm_control_material(){
-?><table style="margin-left:20%">
+public function fm_control_material($analytes){
+
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<link rel="stylesheet" type="text/css" href="<?php echo site['main_css']; ?>"  />
+	<script type="text/javascript" src="<?php echo site['main_js']; ?>"></script>
+				
+</head>
+<body>
+<table style="margin-left:20%">
 <tr>
 <td style = "width: 50%">
-	<form action = "classes/process.php" method = "POST">
+	<form action = "./" method = "POST">
 		<fieldset >
-		<legend>Material Details</legend>
+		<legend><?php echo $_SESSION['lang']['forms']['material']['cm_title'];?> </legend>
 			<table border = "0" align = "center" style = "width: 100%;" >
 				<tr>
 					<td style = "width: 100%;">
-					<select class = "user_form" name="select_analyte">
+					<select class = "user_form" name="<?php echo readers['material']['select'];?>">
 					<?php 
-						$sql ="select an_id, an_name,an_nits, User_usr_id from Analyte";
-						$array_all_analyte = $MYSQL->getResults($sql);
-						$_SESSION["qry"]=$sql;
-						foreach($array_all_analyte as $array_analyte){?>
+						foreach($analytes as $array_analyte){?>
 						<option value="<?php echo $array_analyte['an_id'] ?>"><?php echo $array_analyte['an_name']?></option>
 						<?php
 						}
@@ -166,16 +175,16 @@
 					</td>
 				</tr>
 				<tr>
-					<td style = "width: 100%;">
-						<input class = "user_form" type = "text" name ="materialdesc" placeholder = "<?php echo $_SESSION['lang']["materialDesc"];?>" <?php if(isset($_SESSION['editId'])){ ?> value = "<?php echo $pers_to_edit["material"]; ?>" required <?php } ?> required />
+					<td style = "width: 100%;">	
+						<input class = "user_form" type = "text" name ="<?php echo readers['material']['desc'];?>"  placeholder = "<?php echo $_SESSION['lang']['forms']['material']['cm_description'];?>" <?php if(isset($_SESSION['editId'])){ ?> value = "<?php echo $pers_to_edit["material"]; ?>" required <?php } ?> required />
 					</td>
 				</tr> 
 				<tr>
 					<td style = "width: 100%;">
 					<div class = "user_form">
-						 <label><input type="radio" name="controllevel" value="High" />High</label>
-						 <label><input type="radio" name="controllevel" value="Medium" />Med</label>
-						<label><input type="radio" name="controllevel" value="Loaw" />Low</label>
+						 <label><input type="radio" name="<?php echo readers['material']['level'];?>" value="High" />High</label>
+						 <label><input type="radio" name="<?php echo readers['material']['level'];?>" value="Medium" />Med</label>
+						<label><input type="radio" name="<?php echo readers['material']['level'];?>" value="Loaw" />Low</label>
 						</div>
 					</td>
 				</tr>
@@ -186,17 +195,17 @@
 		<table>
 			<tr>
 				<td>
-					<input class = "user_form" type = "text" name = "lotnumber" placeholder = "<?php echo $_SESSION['lang']["materiallotno"];?>" <?php if(isset($_SESSION['editId'])){ ?> value = "<?php echo $pers_to_edit["lotnumber"]; ?>"<?php } ?>  />
+					<input class = "user_form" type = "text" name = "<?php echo readers['material']['lotno'];?>" placeholder = "<?php echo $_SESSION['lang']['forms']['material']['cm_lot_number'];?>" <?php if(isset($_SESSION['editId'])){ ?> value = "<?php echo $pers_to_edit["lotnumber"]; ?>"<?php } ?>  />
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<input class = "user_form" type = "text" name = "controlvalue" placeholder = "<?php echo $_SESSION['lang']["materialmean"];?>" <?php if(isset($_SESSION['editId'])){ ?> value = "<?php echo $pers_to_edit["controlvalue"]; ?>"<?php } ?> required />
+					<input class = "user_form" type = "text" name = "<?php echo readers['material']['cvalue'];?>" placeholder = "<?php echo $_SESSION['lang']['forms']['material']['cm_mean'];?>" <?php if(isset($_SESSION['editId'])){ ?> value = "<?php echo $pers_to_edit["controlvalue"]; ?>"<?php } ?> required />
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<input class = "user_form" type = "text" name = "stddeviation" placeholder = "<?php echo $_SESSION['lang']["materialstd"];?>" <?php if(isset($_SESSION['editId'])){ ?> value = "<?php echo $pers_to_edit["stddeviation"]; ?>"<?php } ?>  />
+					<input class = "user_form" type = "text" name = "<?php echo readers['material']['stddev']?>" placeholder = "<?php echo $_SESSION['lang']['forms']['material']['cm_sd'];?>"  <?php if(isset($_SESSION['editId'])){ ?> value = "<?php echo $pers_to_edit["cm_sd"]; ?>"<?php } ?>
 				</td>
 			</tr>
 		</table>
@@ -204,16 +213,20 @@
 		<tr>
 			<td >
 				<?php if(isset($_SESSION['editId'])){ ?>
-					<input class = "user_form" type = "submit" name = "update_details" value = "<?php echo $_SESSION['lang']["updatedetailsbutton"]; ?>" />
+					<input class = "user_form" type = "submit" name = "<?php echo readers['material']['update']?>" value = "<?php echo $_SESSION['lang']['forms']['material']['cm_sd'];?>" />
 				<?php }else{ ?>
-					<Button type = "submit" name = "save_details"> <?php echo $_SESSION['lang']["savedetails"]; ?> </Button> 
-				<Button class="cancelbtn" type = "Cancel" OnClick = "parent.location='./'"> <?php echo $_SESSION['lang']["cancel"]; ?> </Button>
+					<Button type = "submit" name = "<?php echo readers['material']['save']?>"> <?php echo $_SESSION['lang']['forms']['material']['savedetails'];?> </Button> 
+				<Button class="cancelbtn" type = "Cancel" OnClick = "parent.location='./'"><?php echo $_SESSION['lang']['forms']['material']['cancel'];?>  </Button>
 			</td>
 			<?php } ?>
 			<td></td>
 		</tr>
 </form>
-</table><?php	
+</table>
+</body>
+</html>
+<?php	
+
 }#end@FUNCTION @fm_new_control_material
 /**
 *

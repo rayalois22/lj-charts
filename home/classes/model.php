@@ -79,27 +79,27 @@
 *@param array $profilepicture
 *
 */
-		public function mod_register($firstname, $lastname, $username, $emailaddress, $role, $password, $profilepicture){
-			$ObjCHK = new db_check();
-			$BLOWFISH = new blowfish();
-			//check if the user exists already
-			if(!$ObjCHK->is_user($username)){
-				if(!empty($profilepicture)){
-					$img = [
-						$profilepicture['name'],
-						$profilepicture['type'],
-						$profilepicture['tmp_name'],
-						$profilepicture['error'],
-						$profilepicture['size']
-					];
-					$profilepicture = $ObjCHK->upload_profimage($image, $username);
-				} else {
-					$profilepicture = 'default.png';
-				}
-				if($ObjCHK->create_new_user($firstname, $lastname, $username, $emailaddress, $role, $BLOWFISH->encrypt_password($password), $profilepicture)){
-					print 'Success';
-				} else {print 'Error';}
-			}
+public function mod_register($firstname, $lastname, $username, $emailaddress, $role, $password, $profilepicture){
+	$ObjCHK = new db_check();
+	$BLOWFISH = new blowfish();
+	//check if the user exists already
+	if(!$ObjCHK->is_user($username)){
+		if(!empty($profilepicture)){
+			$img = [
+				$profilepicture['name'],
+				$profilepicture['type'],
+				$profilepicture['tmp_name'],
+				$profilepicture['error'],
+				$profilepicture['size']
+			];
+			$profilepicture = $ObjCHK->upload_profimage($image, $username);
+		} else {
+			$profilepicture = 'default.png';
+		}
+		if($ObjCHK->create_new_user($firstname, $lastname, $username, $emailaddress, $role, $BLOWFISH->encrypt_password($password), $profilepicture)){
+			print 'Success';
+		} else {print 'Error';}
+	}
 }#end@FUNCTION mod_register
 /**
 *
@@ -114,5 +114,30 @@
 				print 'Error';
 			}
 }#end@FUNCTION @mod_newan
+
+		public function mod_get_all_analytes(){
+			$ObjCHK = new db_check();
+			$analyte = $ObjCHK->get_all_analytes();
+			return $analyte;
+
+		}#end@FUNCTION @mod_get_all_analytes
+		public function mod_get_analyte_units($an_id){
+			$ObjCHK = new db_check();
+			$an_units = $ObjCHK->get_analyte_units($an_id);
+		return $an_units;
+		}
+		public function mod_insert_material($cm_name, $an_id, $an_units,  $cm_level, $lotno, $mean, $sd){
+			$ObjCHK = new db_check();
+			$isSuccess= $ObjCHK->insert_material($cm_name, $an_id,$an_units,$_SESSION['user']['userid'], $cm_level, $lotno, $mean, $sd);
+
+			if($isSuccess){
+				print '<em>'.$cm_name.'</em> has been created.';
+			}
+			else{
+				print  "error creating ". "<em>". $cm_name. "</em>";
+			}
+
+		}
 }#end@CLASS
+
 ?>

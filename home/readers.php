@@ -43,6 +43,20 @@ define("readers", [
 		"units"	 => "analyteunits",
 		"create" => "createnewanalyte"
 	],
+	"material"=>[
+		"select"=>"selectanalyte",
+		"desc" => "materialDesc",
+		"level"=> "controllevel",
+		"cvalue"=>"controlvalue",
+		"stddev"=>"stddeviation",
+		"lotno"=>"lotnumber",
+		"mean" =>"mean",
+		"update"=>"update_details",
+		"save"=>"save_details"
+
+
+
+	],
 	"universal"	=> [
 		"cancel" => "cancelreq"
 	]

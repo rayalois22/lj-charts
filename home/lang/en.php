@@ -52,6 +52,7 @@ $lang = [ "forms" => [
 *
 */
 	"material" => [
+		"cm_title" => "Material Details",
 		"cm_name" => "Control Material",
 		"cm_description"  =>	"Material Description",
 		"cm_lot_number" =>  "Lot Number",
@@ -59,7 +60,7 @@ $lang = [ "forms" => [
 		"cm_level" =>  "high",
 		"cm_sd"   =>  "Standard Deviation",
 		"returnbutton"  =>  "Return",
-		"updatedetailsbutton" => "Update Record",
+		"updatedetails" => "Update Record",
 		"savedetails" 	=> "Save",
 		"cancel"  => "Cancel"		
 	]

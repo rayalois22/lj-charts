@@ -42,10 +42,7 @@
 				$MOD = new model();
 				$MOD->mod_login(addslashes($_POST[readers['login']['un']]), addslashes($_POST[readers['login']['pw']]));
 			}
-			if(isset($_POST[readers['main_navigation']['cm']])){
-				$MOD = new model();
 
-			}
 			//dashboard
 			if(isset($_SESSION['user'])){
 				for($i=0; $i<count(array_keys(site['main_navigation'])); $i++){
@@ -68,8 +65,10 @@
 							case 'cm':
 								print 'Control material options...';
 								$FM = new ljcharts_forms();
-								
-								$FM->fm_control_material();
+								$MOD = new model();
+								$analytes = $MOD->mod_get_all_analytes();
+
+								$FM->fm_control_material($analytes);
 								break;
 							case 'cmr':
 								print 'Control material result options...';
@@ -83,6 +82,15 @@
 					$MOD = new model();
 					$MOD->mod_newan(addslashes($_POST[readers['an']['name']]), addslashes($_POST[readers['an']['units']]));
 				}
+				if(isset($_POST[readers['material']['save']])){
+					$MOD = new model();
+					$an_id = isset($_POST[readers['material']['select']])?$_POST[readers['material']['select']]:"";
+					$an_units = $MOD->mod_get_analyte_units($an_id);
+					//$cm_name = isset($_POST[readers['material']['desc']])?$_POST[readers['material']['desc']]:"";
+					$MOD->mod_insert_material($_POST[readers['material']['desc']],$an_id,$an_units,$_POST[readers['material']['level']],$_POST[readers['material']['lotno']],$_POST[readers['material']['cvalue']], $_POST[readers['material']['stddev']]);
+				}
+				
+				if (isset($_POST[readers['material']['update']])){}
 				$HEADER = new ljcharts_header();
 				$HEADER->set_header();
 			}
