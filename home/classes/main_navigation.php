@@ -19,11 +19,9 @@
 *
 */
 		public function set(){
-			print '<ul>';
 			foreach(site['main_navigation'] as $key=>$value){
-				print '<li><a href="./?'.$key.'">'.$value.'</a></li>';
+				print '<a href="./?'.$key.'">'.$value.'</a>';
 			}#end@foreach
-			print '</ul>';
 }#end@FUNCTION
 }#end@CLASS
 ?>

@@ -69,9 +69,34 @@
 								$analytes = $MOD->mod_get_all_analytes();
 
 								$FM->fm_control_material($analytes);
+								$FM->body_open();
+								###########################################################
+								#TODO: Jude, find a way to instantiate the forms here#
+								#Then we will hook the below actions into the form#
+								###########################################################
+								//$FM->fm_new_analyte();
+								//avail options to create, update, and delete an
+								$FM->fm_options('an');
+								break;
+							case 'cm':
+								$FM = new ljcharts_forms();
+								$FM->body_open();
+								###########################################################
+								#TODO: Jude, find a way to instantiate the forms here#
+								#Then we will hook the below actions into the form#
+								###########################################################
+								//avail options to create, update, and delete cm
+								$FM->fm_options('cm');
 								break;
 							case 'cmr':
-								print 'Control material result options...';
+								$FM = new ljcharts_forms();
+								$FM->body_open();
+								###########################################################
+								#TODO: Jude, find a way to instantiate the forms here#
+								#Then we will hook the below actions into the form#
+								###########################################################
+								//avail options to create, update, and delete cmr
+								$FM->fm_options('cmr');
 								break;
 							default:
 								break;
@@ -91,6 +116,8 @@
 				}
 				
 				if (isset($_POST[readers['material']['update']])){}
+				$FM = new ljcharts_forms();
+				$FM->body_close();
 				$HEADER = new ljcharts_header();
 				$HEADER->set_header();
 			}

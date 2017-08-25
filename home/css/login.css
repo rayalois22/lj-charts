@@ -108,6 +108,9 @@ input {
   -webkit-transition: background-color 0.3s;
           transition: background-color 0.3s;
 }
+select {
+	height:1.5em;
+}
 
 input[type='submit'] {
   cursor: pointer;
@@ -145,6 +148,9 @@ input[type='submit'] {
 }
 
 .login label,
+.login input[type='name'],
+.login input[type='address'],
+.login input[type='email'],
 .login input[type='text'],
 .login input[type='password'],
 .login input[type='submit'] {
@@ -163,6 +169,9 @@ input[type='submit'] {
   padding-right: 1.25rem;
 }
 
+.login input[type='name'],
+.login input[type='address'],
+.login input[type='email'],
 .login input[type='password'],
 .login input[type='text'] {
   background-color: #3b4148;
@@ -172,6 +181,12 @@ input[type='submit'] {
 
 .login input[type='password']:focus,
 .login input[type='password']:hover,
+.login input[type='name']:focus,
+.login input[type='name']:hover,
+.login input[type='email']:focus,
+.login input[type='email']:hover,
+.login input[type='file']:focus,
+.login input[type='file']:hover,
 .login input[type='text']:focus,
 .login input[type='text']:hover {
   background-color: #434a52;

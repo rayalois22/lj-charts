@@ -28,23 +28,7 @@
 			if($this->is_material($cm_name, $usr_id)){
 				return false;
 			}else{
-				if($statement = $this->connection->prepare("INSERT INTO `controlmaterial`(`cm_name`,`an_id`,`cm_units`, `usr_id`,`cm_lot_number`,`cm_level`,`cm_mean`,`cm_sd`) VALUES(?,?,?,?,?,?,?,?)")){
-					if($statement->bind_param("sdssssdd", $cm_name, $an_id, $an_units, $usr_id, $lotno, $cm_level,$mean, $sd)){
-						if($statement->execute())	{
-							$statement->close();
-							return true;
-						}else{
-							return false;
-						}
-					}else{
-						return false;
-					}
-				}
-				else{
-					return false;
-				}
-			}
-		}
+				if($statement = $this->connection->prepare("INSERT INTO `controlmaterial`(`cm_name`,`an_id`,`cm_units`, `usr_id`,`cm_lot_number`,`cm_level`,`cm_mean`,`cm_sd`) VALUES(?,?,?,?,?,?,?,?)")){if($statement->bind_param("sdssssdd", $cm_name, $an_id, $an_units, $usr_id, $lotno, $cm_level,$mean, $sd)){if($statement->execute()){$statement->close();return true;}else{return false;}}else{return false;}}else{return false;}}}
 
 }
 

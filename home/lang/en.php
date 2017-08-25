@@ -18,6 +18,7 @@ $lang = [ "forms" => [
 		"pw"	=> "Password",
 		"lo"	=> "Login",
 		"re"	=> "Register",
+		"lang"	=> "Language",
 		"en"	=> "English",
 		"fr"	=> "French"
 	],
@@ -30,7 +31,7 @@ $lang = [ "forms" => [
 		"ro"	=> "Role",
 		"pw"	=> "Password",
 		"cpw"	=> "Confirm password",
-		"pi"	=> "Profile picture",
+		"pi"	=> "Picture",
 		"re"	=> "Register",
 		"reset" => "Clear",
 		"cancel" => "Cancel",
@@ -64,5 +65,10 @@ $lang = [ "forms" => [
 		"savedetails" 	=> "Save",
 		"cancel"  => "Cancel"		
 	]
+],#end@forms
+"actionbar" => [
+		"create" => "New",
+		"update" => "Edit",
+		"delete" => "Delete"
 ]];
 ?>
