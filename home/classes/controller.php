@@ -111,8 +111,13 @@
 					$MOD = new model();
 					$an_id = isset($_POST[readers['material']['select']])?$_POST[readers['material']['select']]:"";
 					$an_units = $MOD->mod_get_analyte_units($an_id);
-					//$cm_name = isset($_POST[readers['material']['desc']])?$_POST[readers['material']['desc']]:"";
-					$MOD->mod_insert_material($_POST[readers['material']['desc']],$an_id,$an_units,$_POST[readers['material']['level']],$_POST[readers['material']['lotno']],$_POST[readers['material']['cvalue']], $_POST[readers['material']['stddev']]);
+					$cm_name = isset($_POST[readers['material']['desc']])?$_POST[readers['material']['desc']]:"";
+					$cm_level = isset($_POST[readers['material']['level']])?$_POST[readers['material']['level']]:"";
+					$lotno = isset($_POST[readers['material']['lotno']])?$_POST[readers['material']['lotno']]:"";
+					$cvalue = isset($_POST[readers['material']['cvalue']])?$_POST[readers['material']['cvalue']]:"";
+					$sd = isset($_POST[readers['material']['stddev']])?$_POST[readers['material']['stddev']]:"";
+					
+					$MOD->mod_insert_material($cm_name,$an_id,$an_units,$cm_level,$lotno,$cvalue, $sd);
 				}
 				
 				if (isset($_POST[readers['material']['update']])){}
